@@ -21,9 +21,15 @@ public class BookController {
         return bookService.getAllBooks();
     }
 
-    @GetMapping("/book/{id}")
+    @GetMapping("/books/{id}")
     public Book getBook(@PathVariable("id") int id){
         return bookService.getSingleBookById(id);
+    }
+
+    @PostMapping("/books")
+    public Book addBook(@RequestBody Book book){
+        Book b = bookService.addBook(book);
+        return b;
     }
 
 }
