@@ -12,9 +12,11 @@ public class Book {
 @Column(name = "book_id")
     private int id;
     private String title;
-    private String author;
 
-    public Book(int id, String title, String author) {
+    @OneToOne(cascade = CascadeType.ALL)
+    private Author author;
+
+    public Book(int id, String title, Author author) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -31,7 +33,7 @@ public class Book {
         return title;
     }
 
-    public String getAuthor() {
+    public Author getAuthor() {
         return author;
     }
 
@@ -43,7 +45,7 @@ public class Book {
         this.title = title;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(Author author) {
         this.author = author;
     }
 
@@ -52,7 +54,7 @@ public class Book {
         return "Book{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", author='" + author + '\'' +
+                ", author=" + author +
                 '}';
     }
 }
