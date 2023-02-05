@@ -1,5 +1,7 @@
 package com.example.bootrestbookapplication.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -15,6 +17,9 @@ public class Author {
 //    @Column(name="last_name")
     String lastName;
 
+    @OneToOne(mappedBy = "author")
+    @JsonBackReference
+    private Book book;
     public Author(int authorId) {
         this.authorId = authorId;
     }
@@ -53,6 +58,14 @@ public class Author {
         this.lastName = lastName;
     }
 
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
     @Override
     public String toString() {
         return "Author{" +
@@ -61,4 +74,6 @@ public class Author {
                 ", lastName='" + lastName + '\'' +
                 '}';
     }
+
+
 }

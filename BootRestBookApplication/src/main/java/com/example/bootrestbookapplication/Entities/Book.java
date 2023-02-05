@@ -1,5 +1,6 @@
 package com.example.bootrestbookapplication.Entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
@@ -14,6 +15,7 @@ public class Book {
     private String title;
 
     @OneToOne(cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Author author;
 
     public Book(int id, String title, Author author) {
