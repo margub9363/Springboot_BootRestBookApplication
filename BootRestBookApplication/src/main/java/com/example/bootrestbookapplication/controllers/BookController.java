@@ -38,4 +38,10 @@ public class BookController {
         bookService.deleteBook(id);
     }
 
+    @PutMapping("/books/{id}")
+    public Book updateBook(@RequestBody Book book, @PathVariable("id") int id) {
+        bookService.updateBookByid(book,id);
+        return book;
+    }
+
 }
