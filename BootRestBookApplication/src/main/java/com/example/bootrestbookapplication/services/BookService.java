@@ -2,8 +2,6 @@ package com.example.bootrestbookapplication.services;
 
 import com.example.bootrestbookapplication.Entities.Book;
 import com.example.bootrestbookapplication.dao.BookRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,8 +10,12 @@ import java.util.stream.Collectors;
 
 @Service
 public class BookService {
-    @Autowired
-    BookRepository bookRepository;
+//    @Autowired
+    private BookRepository bookRepository;
+
+    public BookService(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
 
     private static List<Book> list = new ArrayList<>();
 
