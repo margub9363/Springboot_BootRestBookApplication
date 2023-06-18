@@ -1,8 +1,9 @@
 package com.example.bootrestbookapplication.Entities;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.*;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+import javax.persistence.*;
 
 
 @Entity
