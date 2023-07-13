@@ -1,0 +1,3 @@
+logs_enabled: true
+logs_config:
+  service: BookRestApi

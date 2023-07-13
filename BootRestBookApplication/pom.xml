@@ -33,10 +33,10 @@
             <scope>test</scope>
         </dependency>
 
-                <dependency>
-                    <groupId>com.h2database</groupId>
-                    <artifactId>h2</artifactId>
-                </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>com.h2database</groupId>-->
+        <!--            <artifactId>h2</artifactId>-->
+        <!--        </dependency>-->
 
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
@@ -72,6 +72,11 @@
             <version>3.0.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-datadog</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -80,6 +85,38 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+<!--                <plugin>-->
+<!--                    <groupId>org.apache.maven.plugins</groupId>-->
+<!--                    <artifactId>maven-compiler-plugin</artifactId>-->
+<!--                    <configuration>-->
+<!--                        <compilerArgs>-->
+<!--                            java -javaagent:/path/to/dd-java-agent.jar \-->
+<!--                            -Ddd.logs.injection=true \-->
+<!--                            -Ddd.service=book \-->
+<!--                            -Ddd.env=nonprod \-->
+<!--                            -jar path/to/your/app.jar-->
+<!--                        </compilerArgs>-->
+<!--                    </configuration>-->
+<!--                </plugin>-->
+<!--            </plugins>-->
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <argLine>
+                                java -javaagent:/path/to/dd-java-agent.jar
+                                -Ddd.logs.injection=true
+                                -Ddd.service=book
+                                -Ddd.env=nonprod
+                                -jar path/to/your/app.jar
+                            </argLine>
+                        </configuration>
+                    </plugin>
+
+
+
         </plugins>
     </build>
 
